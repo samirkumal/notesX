@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             items.addAll(Arrays.asList(savedItems));
         }
 
-        String value = shared.getString("string", "Default value");
+        String value = shared.getString("string", "");
         textView.setText(value);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
                 items.add(msg);
                 adapter.notifyDataSetChanged();
-                textView.setText(msg);
+                textView.setText("Recent note:"+msg);
+                Toast.makeText(MainActivity.this, "Notes added successfullly", Toast.LENGTH_SHORT).show();
+                editText.setText("");
             }
         });
     }
